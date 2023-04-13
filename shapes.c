@@ -107,7 +107,7 @@ void rectangle()
 void triangle()
 {
     clearConsole();
-    printf("TRIANGLE!\n");
+    printf("!\n");
     hitEnter();
 }
 

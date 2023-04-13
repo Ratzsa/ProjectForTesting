@@ -4,7 +4,7 @@
 #include "systemfunctions.h"
 #include "shapes.h"
 #include "calculator.h"
-#include "gamecode.h"
+#include "gamemenu.h"
 
 int main()
 {
@@ -19,7 +19,7 @@ int main()
         printf("2. Calculator\n");
         printf("3. Rock-Paper-Scissors\n");
         printf("5. Exit\n");
-        printf("Option: ");
+        printf("Select: ");
         scanf(" %d", &mainMenuSelect);
 
         switch(mainMenuSelect)
@@ -33,7 +33,7 @@ int main()
                 break;
 
             case 3:
-                gameMain();
+                gameMenu();
                 break;
 
             case 5:
