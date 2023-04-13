@@ -15,6 +15,12 @@ bool checkInputs(char input[])
             hitEnter();
             return false;
         }
+        if(input[i] == '+' || input[i] == '-' || input[i] == '/' || input[i] == '*' || input[i] == '%')
+        {
+            printf("Incorrect input. Press enter to continue.\n");
+            hitEnter();
+            return false;
+        }
     }
     return true;
 }

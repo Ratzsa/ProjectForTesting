@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <math.h>
 #include <stdbool.h>
+#include <ctype.h>
 #include "checkinputs.h"
 #include "systemfunctions.h"
 

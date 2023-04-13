@@ -78,30 +78,24 @@ void gameResult(const int player, const int computer)
                         { 2, 0, 1}};
     int score = result[computer - 1][player - 1];
 
+    printf("\nComputer played\n");
+    printHand(computer);
+    printf("\nYou played\n");
+    printHand(player);
+
     if(score == 2)
     {
-        printf("\nComputer played\n");
-        printHand(computer);
-        printf("You played\n");
-        printHand(player);
+        
         printf("\nYou win! Press enter to continue.\n");
         hitEnter();
     }
     else if(score == 1)
     {
-        printf("\nComputer played\n");
-        printHand(computer);
-        printf("You played\n");
-        printHand(player);
         printf("\nIt's a draw! Press enter to continue.\n");
         hitEnter();
     }
     else
     {
-        printf("\nComputer played\n");
-        printHand(computer);
-        printf("You played\n");
-        printHand(player);
         printf("\nYou lose! Press enter to continue.\n");
         hitEnter();
     }
