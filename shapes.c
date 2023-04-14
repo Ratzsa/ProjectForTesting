@@ -2,6 +2,8 @@
 #include <stdlib.h>
 #include <math.h>
 #include <stdbool.h>
+#include <string.h>
+#include <ctype.h>
 #include "systemfunctions.h"
 #include "checkinputs.h"
 
@@ -11,23 +13,27 @@ void rectangle();
 void triangle();
 void circle();
 void parallelogram();
+int menuSelectionConvert(char text[]);
 
 void shapesMain()
 {
+    clearInput();
+    char menuInput[20];
     bool inShapesMenu = true;
     int shapesMenuSelect;
     while(inShapesMenu)
     {
-        shapesMenuSelect = 0;
         clearConsole();
-        printf("Shapes Menu\nSelect a shape to calculate\n");
-        printf("1. Rectangle\n");
-        printf("2. Triangle\n");
-        printf("3. Circle\n");
-        printf("4. Parallelogram\n");
-        printf("5. Return to main menu\n");
+        printf("Shapes Menu\nType a shape to calculate\n");
+        printf("Rectangle\n");
+        printf("Triangle\n");
+        printf("Circle\n");
+        printf("Parallelogram\n");
+        printf("Or type exit to return to main menu\n");
         printf("Option: ");
-        scanf(" %d", &shapesMenuSelect);
+        scanf(" %s", menuInput);
+
+        shapesMenuSelect = menuSelectionConvert(menuInput); // Kanske vore bättre med en bunt if-satser, men det här funkar som det ska.
 
         switch(shapesMenuSelect)
         {
@@ -97,7 +103,7 @@ void rectangle()
         clearConsole();
         printf(" _______________ \n|               |\n|   RECTANGLE   | a\n|_______________|\n        b\n");
         printf("Side a: %.2f\nSide b: %.2f\n", sideA, sideB);
-        printf("Circumference: %.2f\nArea: %.2f\nPress enter to continue.", circumference, area);
+        printf("Rectangle circumference: %.2f\nArea: %.2f\nPress enter to continue.", circumference, area);
         inRectangleMenu = false;
         hitEnter();
     }
@@ -106,8 +112,41 @@ void rectangle()
 
 void triangle()
 {
+    float sideA;
+    float sideB;
+    float sideC;
+    float triangleCircumference;
+    float triangleArea;
+    char triangleInput[50];
+    bool isTriangleNum;
+
     clearConsole();
-    printf("!\n");
+    printf(" |\\\n | \\\na|  \\ c\n |   \\\n |____\\\n    b\n");
+    printf("Enter a: ");
+    scanf(" %s", triangleInput);
+    isTriangleNum = checkInputs(triangleInput);
+    if(!isTriangleNum)
+    {
+        return;
+    }
+    sideA = atof(triangleInput);
+
+    printf("Enter b: ");
+    scanf(" %s", triangleInput);
+    isTriangleNum = checkInputs(triangleInput);
+    if(!isTriangleNum)
+    {
+        return;
+    }
+    sideB = atof(triangleInput);
+
+    sideC = sqrt((sideA * sideA) + (sideB * sideB));
+
+    triangleArea = (sideA * sideB) / 2;
+    triangleCircumference = sideA + sideB + sideC;    
+
+    printf("Triangle circumference: %.2f\nArea: %.2f\nSide c: %.2f\nPress enter to continue.\n", triangleCircumference, triangleArea, sideC);
+
     hitEnter();
 }
 
@@ -136,7 +175,7 @@ void circle()
 
     clearConsole();
     printf("    x  x\n x        x\nx          x\nx          x\n x        x\n    x  x\n   CIRCLE\n");
-    printf("Circle radius: %.2f\nCircle diameter: %.2f\n", circleRadius, circleRadius * 2);
+    printf("Circle radius: %.2f\nDiameter: %.2f\n", circleRadius, circleRadius * 2);
     printf("Circumference: %.2f\nArea: %.2f\nPress enter to continue.\n", circleCircumference, circleArea);
 
     hitEnter();
@@ -145,7 +184,89 @@ void circle()
 
 void parallelogram()
 {
+    float parallelogramA;
+    float parallelogramB;
+    float parallelogramH;
+    float parallelogramCircumference;
+    float parallelogramArea;
+    char parallelogramInput[50];
+    bool isParallelogramNum;
+
     clearConsole();
-    printf("PARALLELOGRAM!\n");
+    printf("    ________\n   /|       /\n  / | h    / a\n /  |     /\n/___|____/\n     b\n");
+
+    printf("Enter a: ");
+    scanf(" %s", parallelogramInput);
+    isParallelogramNum = checkInputs(parallelogramInput);
+    if(!isParallelogramNum)
+    {
+        return;
+    }
+    parallelogramA = atof(parallelogramInput);
+
+    printf("Enter b: ");
+    scanf(" %s", parallelogramInput);
+    isParallelogramNum = checkInputs(parallelogramInput);
+    if(!isParallelogramNum)
+    {
+        return;
+    }
+    parallelogramB = atof(parallelogramInput);
+
+    printf("Enter h: ");
+    scanf(" %s", parallelogramInput);
+    isParallelogramNum = checkInputs(parallelogramInput);
+    if(!isParallelogramNum)
+    {
+        return;
+    }
+    parallelogramH = atof(parallelogramInput);
+
+    parallelogramCircumference = (parallelogramA + parallelogramB) * 2;
+    parallelogramArea = parallelogramB * parallelogramH;
+
+    printf("Parallelogram circumference: %.2f\nArea: %.2f\nPress enter to contine.\n", parallelogramCircumference, parallelogramArea);
+
     hitEnter();
+}
+
+int menuSelectionConvert(char text[])
+{
+    for(int i = 0; i < strlen(text); i++)
+    {
+        text[i] = tolower(text[i]);
+    }
+
+    char menuRectangle[] = "rectangle";
+    char menuTriangle[] = "triangle";
+    char menuCircle[] = "circle";
+    char menuParallelogram[] = "parallelogram";
+    char menuExit[] = "exit";
+
+    if(strcmp(text, menuRectangle) == 0)
+    {
+        return 1;
+    }
+
+    if(strcmp(text, menuTriangle) == 0)
+    {
+        return 2;
+    }
+
+    if(strcmp(text, menuCircle) == 0)
+    {
+        return 3;
+    }
+
+    if(strcmp(text, menuParallelogram) == 0)
+    {
+        return 4;
+    }
+
+    if(strcmp(text, menuExit) == 0)
+    {
+        return 5;
+    }
+
+    return 0;   
 }
