@@ -3,9 +3,11 @@
 #include <time.h>
 #include <stdbool.h>
 #include "systemfunctions.h"
+#include "gamecode.h"
 
 void gameResult(int player, int computer);
 void printHand(int choice);
+void saveResult(int result);
 
 const char rock[] = "    _______\n---'   ____)\n      (_____)\n      (_____)\n      (____)\n---.__(___)";
 const char paper[] = "    _______\n---'   ____)____\n          ______)\n          _______)\n         _______)\n---.__________)";
@@ -99,6 +101,7 @@ void gameResult(const int player, const int computer)
         printf("\nYou lose! Press enter to continue.\n");
         hitEnter();
     }
+    saveResult(score);
 }
 
 void printHand(const int choice)
@@ -118,4 +121,19 @@ void printHand(const int choice)
         printf(scissors);
         printf("\n");
     }
+}
+
+void saveResult(int result)
+{
+    FILE *resultFile = fopen("results.rps", "ab");
+    if(resultFile == NULL)
+    {
+        printf("File error.\n");
+        exit(1);
+    }
+    Game toFile;
+    toFile.gameResult = result;
+    toFile.dateAdded = time(0);
+    fwrite(&toFile, sizeof(Game), 1, resultFile);
+    fclose(resultFile);
 }

@@ -1,13 +1,34 @@
 #include <stdio.h>
 #include <stdbool.h>
 #include <stdlib.h>
+#include <time.h>
 #include "systemfunctions.h"
 #include "shapes.h"
 #include "calculator.h"
 #include "gamemenu.h"
+#include "gamecode.h"
 
 int main()
 {
+    // För att säkerställa att resultatfilen funkar.
+    FILE *temp = fopen("results.rps", "rb");
+    if(temp == NULL)
+    {
+        fclose(temp);
+        temp = fopen("results.rps", "wb");
+        /*
+        Game toFile;
+        toFile.gameResult = 3;
+        toFile.dateAdded = time(0);
+        fwrite(&toFile, sizeof(Game), 1, temp); */
+        fclose(temp);
+    }
+    if(temp == NULL)
+    {
+        printf("File error. Crashing to OS.\n");
+        exit(1);
+    }
+
     bool programIsRunning = true;
     int mainMenuSelect;
     while(programIsRunning)
