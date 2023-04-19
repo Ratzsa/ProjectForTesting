@@ -3,7 +3,7 @@ CFLAGS = -Wall -Werror -g
 SOURCES = main.c calculator.c checkinputs.c gamecode.c gamemenu.c shapes.c systemfunctions.c
 DEPS = calculator.h checkinputs.h gamecode.h gamemenu.h shapes.h systemfunctions.h
 CC = gcc
-DEBUG?=1
+DEBUG? = 1
 ifeq ($(DEBUG), 1)
 	CFLAGS += -g
 	OUTPUTDIR = bin/debug
@@ -12,6 +12,7 @@ else
 	CFLAGS += -g0 -O3
 	OUTPUTDIR = bin/release
 endif
+
 
 OBJS = $(addprefix $(OUTPUTDIR)/,$(SOURCES:.c=.o))
 
