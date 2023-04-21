@@ -59,6 +59,24 @@ protected:
     }
 };
 
+class ParallelogramCircumferenceTest : public testing::Test
+{
+protected:
+    void SetUp() override
+    {
+        // initialize
+    }
+};
+
+class ParallelogramAreaTest : public testing::Test
+{
+protected:
+    void SetUp() override
+    {
+        // initialize
+    }
+};
+
 TEST_F(RectangleCircumferenceTest,WhenInput5point9And7point30ShouldReturnCircumference26point40)
 {
     float a = 5.9;
@@ -99,10 +117,26 @@ TEST_F(TriangleCircumferenceTest,WhenInput5point32And8point76And10point2489Shoul
     ASSERT_FLOAT_EQ(result, 24.3289);
 }
 
-TEST_F(TriangleAreaTest,Text)
+TEST_F(TriangleAreaTest,WhenInput9point13And11point78ShouldReturnArea53point7757)
 {
     float a = 9.13;
     float b = 11.78;
     float result = triangleArea(a, b);
     ASSERT_FLOAT_EQ(result, 53.7757);
+}
+
+TEST_F(ParallelogramCircumferenceTest,Text)
+{
+    float a = 7;
+    float b = 4.31;
+    float result = parallelogramCircum(a, b);
+    ASSERT_FLOAT_EQ(result, 22.62);
+}
+
+TEST_F(ParallelogramAreaTest,Text)
+{
+    float a = 8.7;
+    float h = 9.2;
+    float result = parallelogramArea(a, h);
+    ASSERT_FLOAT_EQ(result, 80.04);
 }
