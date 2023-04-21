@@ -4,6 +4,9 @@ SOURCES = main.c calculator.c checkinputs.c gamecode.c gamemenu.c shapes.c syste
 DEPS = calculator.h checkinputs.h gamecode.h gamemenu.h shapes.h systemfunctions.h
 CC = gcc
 DEBUG? = 1
+GTEST = gtest
+LIBGTEST = C:\msys64\mingw64\lib\libgtest_main.a C:\msys64\mingw64\lib\libgtest.a
+
 ifeq ($(DEBUG), 1)
 	CFLAGS += -g
 	OUTPUTDIR = bin/debug
@@ -28,5 +31,11 @@ clean:
 
 $(OUTPUTDIR):
 	@mkdir "$(OUTPUTDIR)"
+
+check.exe: testshapes.o shapes.o systemfunctions.o checkinputs.o
+	g++ -o $@ $^ $(CFLAGS) -I $(GTEST) $(LIBGTEST)
+
+test: check.exe
+	./check.exe
 
 .PHONY: clean

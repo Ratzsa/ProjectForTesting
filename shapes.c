@@ -14,6 +14,15 @@ void triangle();
 void circle();
 void parallelogram();
 int menuSelectionConvert(char text[]);
+float rectangleCircum(float a, float b);
+float rectangleArea(float a, float b);
+float circleCircum(float r);
+float circleArea(float r);
+float triangleCircum(float a, float b, float c);
+float triangleArea(float a, float b);
+float parallelogramCircum(float a, float b);
+float parallelogramArea(float b, float h);
+
 
 void shapesMain()
 {
@@ -97,8 +106,8 @@ void rectangle()
         }
         sideB = atof(rectangleInput);
         
-        circumference = (sideA + sideB) * 2;
-        area = sideA * sideB;
+        circumference = rectangleCircum(sideA, sideB);
+        area = rectangleArea(sideA, sideB);
 
         clearConsole();
         printf(" _______________ \n|               |\n|   RECTANGLE   | a\n|_______________|\n        b\n");
@@ -115,8 +124,8 @@ void triangle()
     float sideA;
     float sideB;
     float sideC;
-    float triangleCircumference;
-    float triangleArea;
+    float circumference;
+    float area;
     char triangleInput[50];
     bool isTriangleNum;
 
@@ -142,19 +151,19 @@ void triangle()
 
     sideC = sqrt((sideA * sideA) + (sideB * sideB));
 
-    triangleArea = (sideA * sideB) / 2;
-    triangleCircumference = sideA + sideB + sideC;    
+    area = triangleArea(sideA, sideB);
+    circumference = triangleCircum(sideA, sideB, sideC);    
 
-    printf("Triangle circumference: %.2f\nArea: %.2f\nSide c: %.2f\nPress enter to continue.\n", triangleCircumference, triangleArea, sideC);
+    printf("Triangle circumference: %.2f\nArea: %.2f\nSide c: %.2f\nPress enter to continue.\n", circumference, area, sideC);
 
     hitEnter();
 }
 
 void circle()
 {
-    float circleRadius;
-    float circleCircumference;
-    float circleArea;
+    float radius;
+    float circumference;
+    float area;
     char circleInput[50];
     bool isCircleNum;
 
@@ -168,15 +177,15 @@ void circle()
     {
         return;
     }
-    circleRadius = atof(circleInput);
+    radius = atof(circleInput);
 
-    circleCircumference = 2 * PI * circleRadius;
-    circleArea = PI * (circleRadius * circleRadius);
+    circumference = circleCircum(radius);
+    area = circleArea(radius);
 
     clearConsole();
     printf("    x  x\n x        x\nx          x\nx          x\n x        x\n    x  x\n   CIRCLE\n");
-    printf("Circle radius: %.2f\nDiameter: %.2f\n", circleRadius, circleRadius * 2);
-    printf("Circumference: %.2f\nArea: %.2f\nPress enter to continue.\n", circleCircumference, circleArea);
+    printf("Circle radius: %.2f\nDiameter: %.2f\n", radius, radius * 2);
+    printf("Circumference: %.2f\nArea: %.2f\nPress enter to continue.\n", circumference, area);
 
     hitEnter();
     return;
@@ -184,11 +193,11 @@ void circle()
 
 void parallelogram()
 {
-    float parallelogramA;
-    float parallelogramB;
-    float parallelogramH;
-    float parallelogramCircumference;
-    float parallelogramArea;
+    float sideA;
+    float sideB;
+    float height;
+    float circumference;
+    float area;
     char parallelogramInput[50];
     bool isParallelogramNum;
 
@@ -202,7 +211,7 @@ void parallelogram()
     {
         return;
     }
-    parallelogramA = atof(parallelogramInput);
+    sideA = atof(parallelogramInput);
 
     printf("Enter b: ");
     scanf(" %s", parallelogramInput);
@@ -211,7 +220,7 @@ void parallelogram()
     {
         return;
     }
-    parallelogramB = atof(parallelogramInput);
+    sideB = atof(parallelogramInput);
 
     printf("Enter h: ");
     scanf(" %s", parallelogramInput);
@@ -220,12 +229,12 @@ void parallelogram()
     {
         return;
     }
-    parallelogramH = atof(parallelogramInput);
+    height = atof(parallelogramInput);
 
-    parallelogramCircumference = (parallelogramA + parallelogramB) * 2;
-    parallelogramArea = parallelogramB * parallelogramH;
+    circumference = parallelogramCircum(sideA, sideB);
+    area = parallelogramArea(sideB, height);
 
-    printf("Parallelogram circumference: %.2f\nArea: %.2f\nPress enter to contine.\n", parallelogramCircumference, parallelogramArea);
+    printf("Parallelogram circumference: %.2f\nArea: %.2f\nPress enter to contine.\n", circumference, area);
 
     hitEnter();
 }
@@ -269,4 +278,44 @@ int menuSelectionConvert(char text[])
     }
 
     return 0;   
+}
+
+float rectangleCircum(const float a, const float b)
+{
+    return (a + b) * 2;
+}
+
+float rectangleArea(const float a, const float b)
+{
+    return a * b;
+}
+
+float triangleCircum(const float a, const float b, const float c)
+{
+    return a + b + c;
+}
+
+float triangleArea(const float a, const float b)
+{
+    return (a * b) / 2;
+}
+
+float circleCircum(const float r)
+{
+    return 2 * PI * r;
+}
+
+float circleArea(const float r)
+{
+    return PI * (r * r);
+}
+
+float parallelogramCircum(const float a, const float b)
+{
+    return (a + b) * 2;
+}
+
+float parallelogramArea(const float b, const float h)
+{
+    return b * h;
 }
