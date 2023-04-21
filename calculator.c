@@ -17,7 +17,6 @@ void calculator()
     bool calculatorNum;
     char calculatorInput[50];
     char operator;
-    char opCheck[5] = "";
 
     clearConsole();
 
@@ -45,23 +44,31 @@ void calculator()
     scanf(" %s", calculatorInput);
     operator = operatorCheck(calculatorInput);
 
-    /*
-    TODO
-    Fixa så man inte kan dela med 0.
-    Fixa även så man inte kan x % 0 för det blir också skit.
-    Försök även fixa 0 / 0.    
-    */
-    strncat(opCheck, &operator, 1);
-    if((secondNum >= 0.000001 && secondNum <= -0.000001) && strcmp(opCheck, "/") == 0)
+    if(secondNum == 0.000000 && operator == '/')
     {
         printf("Error: Can not divide by zero.\nPress enter to continue.\n");
         hitEnter();
         return;
     }
 
-    result = calculation(firstNum, secondNum, operator);
+    if(secondNum == 0.000000 && operator == '%')
+    {
+        printf("Error: Can not modulus by zero.\nPress enter to continue.\n");
+        hitEnter();
+        return;
+    }
 
-    printf("%f %c %f = %.2f\nPress enter to continue.\n", firstNum, operator, secondNum, result);     
+    if(firstNum == 0.000000 && secondNum == 0.000000)
+    {
+        printf("That is 0. Absolute zero. No matter what you are trying to do with those numbers, they will always be nothing.\nPress enter to continue.\n");
+        hitEnter();
+        return;
+    }
+
+    result = calculation(firstNum, secondNum, operator);
+    printf("%f\n", secondNum);
+    printf("%f %c %f = %.2f\nPress enter to continue.\n", firstNum, operator, secondNum, result);
+    hitEnter();     
 }
 
 float calculation(float firstNum, float secondNum, char op)

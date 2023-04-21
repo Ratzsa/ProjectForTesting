@@ -125,7 +125,7 @@ TEST_F(TriangleAreaTest,WhenInput9point13And11point78ShouldReturnArea53point7757
     ASSERT_FLOAT_EQ(result, 53.7757);
 }
 
-TEST_F(ParallelogramCircumferenceTest,Text)
+TEST_F(ParallelogramCircumferenceTest,WhenInput7And4point31ShouldReturnCircumference22point62)
 {
     float a = 7;
     float b = 4.31;
@@ -133,7 +133,7 @@ TEST_F(ParallelogramCircumferenceTest,Text)
     ASSERT_FLOAT_EQ(result, 22.62);
 }
 
-TEST_F(ParallelogramAreaTest,Text)
+TEST_F(ParallelogramAreaTest,WhenInput8point7And9point2ShouldReturnArea80point04)
 {
     float a = 8.7;
     float h = 9.2;
