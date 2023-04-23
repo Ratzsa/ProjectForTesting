@@ -66,8 +66,7 @@ void calculator()
     }
 
     result = calculation(firstNum, secondNum, operator);
-    printf("%f\n", secondNum);
-    printf("%f %c %f = %.2f\nPress enter to continue.\n", firstNum, operator, secondNum, result);
+    printf("%.2f %c %.2f = %.2f\nPress enter to continue.\n", firstNum, operator, secondNum, result);
     hitEnter();     
 }
 

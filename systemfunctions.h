@@ -8,4 +8,7 @@ void redColour();
 void resetColour();
 void greenColour();
 
+extern int operatingSystemVar;
+
 #endif
+

@@ -1,5 +1,10 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include <time.h>
+
+#ifdef _WIN32
+    #include <windows.h>
+#endif
 
 void clearInput();
 
@@ -11,7 +16,17 @@ void hitEnter()
 
 void clearConsole()
 {
-    printf("\x1b[H\x1b[2J\x1b[3J");
+    #ifdef _WIN32
+        system("cls");
+    #elif __APPLE__
+        printf("\x1b[H\x1b[2J\x1b[3J");
+    #elif __linux__
+        printf("\x1b[H\x1b[2J\x1b[3J");
+    #elif __unix__
+        printf("\x1b[H\x1b[2J\x1b[3J");
+    else
+        printf("\x1b[H\x1b[2J\x1b[3J");
+    #endif
 }
 
 void clearInput()
