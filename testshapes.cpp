@@ -5,7 +5,7 @@ extern "C"
     #include "shapes.h"
 }
 
-class RectangleCircumferenceTest : public testing::Test
+class ShapesCircumferenceTest : public testing::Test
 {
 protected:
     void SetUp() override
@@ -14,7 +14,7 @@ protected:
     }
 };
 
-class RectangleAreaTest : public testing::Test
+class ShapesAreaTest : public testing::Test
 {
 protected:
     void SetUp() override
@@ -23,120 +23,67 @@ protected:
     }
 };
 
-class CircleCircumferenceTest : public testing::Test
-{
-protected:
-    void SetUp() override
-    {
-        // initialize
-    }
-};
 
-class CircleAreaTest : public testing::Test
-{
-protected:
-    void SetUp() override
-    {
-        // initialize
-    }
-};
-
-class TriangleCircumferenceTest : public testing::Test
-{
-protected:
-    void SetUp() override
-    {
-        // initialize
-    }
-};
-
-class TriangleAreaTest : public testing::Test
-{
-protected:
-    void SetUp() override
-    {
-        // initialize
-    }
-};
-
-class ParallelogramCircumferenceTest : public testing::Test
-{
-protected:
-    void SetUp() override
-    {
-        // initialize
-    }
-};
-
-class ParallelogramAreaTest : public testing::Test
-{
-protected:
-    void SetUp() override
-    {
-        // initialize
-    }
-};
-
-TEST_F(RectangleCircumferenceTest,WhenInput5point9And7point30ShouldReturnCircumference26point40)
+TEST_F(ShapesCircumferenceTest,RectangleWhenInput5point9And7point30ShouldReturnCircumference26point40)
 {
     float a = 5.9;
     float b = 7.30;
     float result;
     result = rectangleCircum(a, b);
-    ASSERT_FLOAT_EQ(result, 26.4);
+    ASSERT_FLOAT_EQ(26.4, result);
 }
 
-TEST_F(RectangleAreaTest,WhenInput8point2And13point47ShouldReturnArea110point45)
+TEST_F(ShapesAreaTest,RectangleWhenInput8point2And13point47ShouldReturnArea110point45)
 {
     float a = 8.2;
     float b = 13.47;
     float result = rectangleArea(a, b);
-    ASSERT_FLOAT_EQ(result, 110.454);
+    ASSERT_FLOAT_EQ(110.454, result);
 }
 
-TEST_F(CircleCircumferenceTest,WhenInputRadius7ShouldReturnCircumference43point9823)
+TEST_F(ShapesCircumferenceTest,CircleWhenInputRadius7ShouldReturnCircumference43point9823)
 {
     float r = 7;
     float result = circleCircum(r);
-    ASSERT_FLOAT_EQ(result, 43.9823);
+    ASSERT_FLOAT_EQ(43.9823, result);
 }
 
-TEST_F(CircleAreaTest,WhenInputRadius13point7ShouldReturnArea589point64551)
+TEST_F(ShapesAreaTest,CircleWhenInputRadius13point7ShouldReturnArea589point64551)
 {
     float r = 13.7;
     float result = circleArea(r);
-    ASSERT_FLOAT_EQ(result, 589.64551);
+    ASSERT_FLOAT_EQ(589.64551, result);
 }
 
-TEST_F(TriangleCircumferenceTest,WhenInput5point32And8point76And10point2489ShouldReturnCircumference24point3289)
+TEST_F(ShapesCircumferenceTest,TriangleWhenInput5point32And8point76And10point2489ShouldReturnCircumference24point3289)
 {
     float a = 5.32;
     float b = 8.76;
     float c = 10.2489;
     float result = triangleCircum(a, b, c);
-    ASSERT_FLOAT_EQ(result, 24.3289);
+    ASSERT_FLOAT_EQ(24.3289, result);
 }
 
-TEST_F(TriangleAreaTest,WhenInput9point13And11point78ShouldReturnArea53point7757)
+TEST_F(ShapesAreaTest,TriangleWhenInput9point13And11point78ShouldReturnArea53point7757)
 {
     float a = 9.13;
     float b = 11.78;
     float result = triangleArea(a, b);
-    ASSERT_FLOAT_EQ(result, 53.7757);
+    ASSERT_FLOAT_EQ(53.7757, result);
 }
 
-TEST_F(ParallelogramCircumferenceTest,WhenInput7And4point31ShouldReturnCircumference22point62)
+TEST_F(ShapesCircumferenceTest,ParallelogramWhenInput7And4point31ShouldReturnCircumference22point62)
 {
     float a = 7;
     float b = 4.31;
     float result = parallelogramCircum(a, b);
-    ASSERT_FLOAT_EQ(result, 22.62);
+    ASSERT_FLOAT_EQ(22.62, result);
 }
 
-TEST_F(ParallelogramAreaTest,WhenInput8point7And9point2ShouldReturnArea80point04)
+TEST_F(ShapesAreaTest,ParallelogramWhenInput8point7And9point2ShouldReturnArea80point04)
 {
     float a = 8.7;
     float h = 9.2;
     float result = parallelogramArea(a, h);
-    ASSERT_FLOAT_EQ(result, 80.04);
+    ASSERT_FLOAT_EQ(80.04, result);
 }

@@ -24,7 +24,7 @@ TEST_F(CalculatorTest,Input128point77And34point5AndPlusShouldReturn163point27)
     char o = '+';
     float result;
     result = calculation(a, b, o);
-    ASSERT_FLOAT_EQ(result, 163.27);
+    ASSERT_FLOAT_EQ(163.27, result);
 }
 
 TEST_F(CalculatorTest,Input128point77AndNegative34point5AndPlusShouldReturn94point27)
@@ -34,7 +34,7 @@ TEST_F(CalculatorTest,Input128point77AndNegative34point5AndPlusShouldReturn94poi
     char o = '+';
     float result;
     result = calculation(a, b, o);
-    ASSERT_FLOAT_EQ(result, 94.27);
+    ASSERT_FLOAT_EQ(94.27, result);
 }
 
 TEST_F(CalculatorTest,Input128point77And34point5AndMinusShouldReturn94point27)
@@ -44,7 +44,7 @@ TEST_F(CalculatorTest,Input128point77And34point5AndMinusShouldReturn94point27)
     char o = '-';
     float result;
     result = calculation(a, b, o);
-    ASSERT_FLOAT_EQ(result, 94.27);
+    ASSERT_FLOAT_EQ(94.27, result);
 }
 
 TEST_F(CalculatorTest,Input128point77AndNegative34point5AndMinusShouldReturn163point27)
@@ -54,7 +54,7 @@ TEST_F(CalculatorTest,Input128point77AndNegative34point5AndMinusShouldReturn163p
     char o = '-';
     float result;
     result = calculation(a, b, o);
-    ASSERT_FLOAT_EQ(result, 163.27);
+    ASSERT_FLOAT_EQ(163.27, result);
 }
 
 TEST_F(CalculatorTest,Input128point77And34point5AndTimesShouldReturn4442point565)
@@ -64,7 +64,7 @@ TEST_F(CalculatorTest,Input128point77And34point5AndTimesShouldReturn4442point565
     char o = '*';
     float result;
     result = calculation(a, b, o);
-    ASSERT_FLOAT_EQ(result, 4442.565);
+    ASSERT_FLOAT_EQ(4442.565, result);
 }
 
 TEST_F(CalculatorTest,Input128point77AndNegative34point5AndTimesShouldReturnNegative4442point565)
@@ -74,7 +74,7 @@ TEST_F(CalculatorTest,Input128point77AndNegative34point5AndTimesShouldReturnNega
     char o = '*';
     float result;
     result = calculation(a, b, o);
-    ASSERT_FLOAT_EQ(result, -4442.565);
+    ASSERT_FLOAT_EQ(-4442.565, result);
 }
 
 TEST_F(CalculatorTest,InputZeroAnd34point5AndTimesShouldReturnZero)
@@ -84,7 +84,7 @@ TEST_F(CalculatorTest,InputZeroAnd34point5AndTimesShouldReturnZero)
     char o = '*';
     float result;
     result = calculation(a, b, o);
-    ASSERT_FLOAT_EQ(result, 0);
+    ASSERT_FLOAT_EQ(0, result);
 }
 
 TEST_F(CalculatorTest,Input128point77AndZeroAndTimesShouldReturnZero)
@@ -94,7 +94,7 @@ TEST_F(CalculatorTest,Input128point77AndZeroAndTimesShouldReturnZero)
     char o = '*';
     float result;
     result = calculation(a, b, o);
-    ASSERT_FLOAT_EQ(result, 0);
+    ASSERT_FLOAT_EQ(0, result);
 }
 
 TEST_F(CalculatorTest,Input128point77And34point5AndDividedByShouldReturn3point7325rounded)
@@ -104,7 +104,7 @@ TEST_F(CalculatorTest,Input128point77And34point5AndDividedByShouldReturn3point73
     char o = '/';
     float result;
     result = round(calculation(a, b, o) * 10000) / 10000;
-    ASSERT_FLOAT_EQ(result, 3.7325);
+    ASSERT_FLOAT_EQ(3.7325, result);
 }
 
 TEST_F(CalculatorTest,InputNegative128point77And34point5AndDividedByShouldReturnNegative3point7325rounded)
@@ -114,7 +114,7 @@ TEST_F(CalculatorTest,InputNegative128point77And34point5AndDividedByShouldReturn
     char o = '/';
     float result;
     result = round(calculation(a, b, o) * 10000) / 10000;
-    ASSERT_FLOAT_EQ(result, -3.7325);
+    ASSERT_FLOAT_EQ(-3.7325, result);
 }
 
 TEST_F(CalculatorTest,Input128point77AndNegative34point5AndDividedByShouldReturnNegative3point7325rounded)
@@ -124,7 +124,7 @@ TEST_F(CalculatorTest,Input128point77AndNegative34point5AndDividedByShouldReturn
     char o = '/';
     float result;
     result = round(calculation(a, b, o) * 10000) / 10000;
-    ASSERT_FLOAT_EQ(result, -3.7325);
+    ASSERT_FLOAT_EQ(-3.7325, result);
 }
 
 TEST_F(CalculatorTest,InputZeroAnd34point5AndDividedByShouldReturnZero)
@@ -134,7 +134,7 @@ TEST_F(CalculatorTest,InputZeroAnd34point5AndDividedByShouldReturnZero)
     char o = '/';
     float result;
     result = calculation(a, b, o);
-    ASSERT_FLOAT_EQ(result, 0);
+    ASSERT_FLOAT_EQ(0, result);
 }
 
 TEST_F(CalculatorTest,Input128point77AndZeroAndDividedByShouldReturnINFINITY)
@@ -144,7 +144,7 @@ TEST_F(CalculatorTest,Input128point77AndZeroAndDividedByShouldReturnINFINITY)
     char o = '/';
     float result;
     result = calculation(a, b, o);
-    ASSERT_FLOAT_EQ(result, INFINITY);
+    ASSERT_FLOAT_EQ(INFINITY, result);
 }
 
 TEST_F(CalculatorTest,Input128point77And34point5AndModulusShouldReturn26)
@@ -154,7 +154,7 @@ TEST_F(CalculatorTest,Input128point77And34point5AndModulusShouldReturn26)
     char o = '%';
     float result;
     result = calculation(a, b, o);
-    ASSERT_FLOAT_EQ(result, 26);
+    ASSERT_FLOAT_EQ(26, result);
 }
 
 TEST_F(CalculatorTest,InputNegative128point77And34point5AndModulusShouldReturnNegative26)
@@ -164,7 +164,7 @@ TEST_F(CalculatorTest,InputNegative128point77And34point5AndModulusShouldReturnNe
     char o = '%';
     float result;
     result = calculation(a, b, o);
-    ASSERT_FLOAT_EQ(result, -26);
+    ASSERT_FLOAT_EQ(-26, result);
 }
 
 TEST_F(CalculatorTest,Input128point77AndNegative34point5AndModulusShouldReturn26)
@@ -174,7 +174,7 @@ TEST_F(CalculatorTest,Input128point77AndNegative34point5AndModulusShouldReturn26
     char o = '%';
     float result;
     result = calculation(a, b, o);
-    ASSERT_FLOAT_EQ(result, 26);
+    ASSERT_FLOAT_EQ(26, result);
 }
 
 TEST_F(CalculatorTest,InputZeroAnd34point5AndModulusShouldReturn26)
@@ -184,7 +184,7 @@ TEST_F(CalculatorTest,InputZeroAnd34point5AndModulusShouldReturn26)
     char o = '%';
     float result;
     result = calculation(a, b, o);
-    ASSERT_FLOAT_EQ(result, 0);
+    ASSERT_FLOAT_EQ(0, result);
 }
 
 /* NOT ABLE TO MODULUS 0

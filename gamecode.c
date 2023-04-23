@@ -8,6 +8,9 @@
 void gameResult(int player, int computer);
 void printHand(int choice);
 void saveResult(int result);
+int gameMechanics(const int player, const int computer);
+
+enum resultList { LOSE, DRAW, WIN };
 
 const char rock[] = "    _______\n---'   ____)\n      (_____)\n      (_____)\n      (____)\n---.__(___)";
 const char paper[] = "    _______\n---'   ____)____\n          ______)\n          _______)\n         _______)\n---.__________)";
@@ -73,25 +76,31 @@ void gameMain()
     }
 }
 
+int gameMechanics(const int player, const int computer)
+{
+    int result[][3] =  {{ DRAW, WIN, LOSE},
+                        { LOSE, DRAW, WIN},
+                        { WIN, LOSE, DRAW}};
+    return result[computer - 1][player - 1];
+}
+
 void gameResult(const int player, const int computer)
 {
-    int result[][3] =  {{ 1, 2, 0},
-                        { 0, 1, 2},
-                        { 2, 0, 1}};
-    int score = result[computer - 1][player - 1];
+    
+    int score = gameMechanics(player, computer);
 
     printf("\nComputer played\n");
     printHand(computer);
     printf("\nYou played\n");
     printHand(player);
 
-    if(score == 2)
+    if(score == WIN)
     {
         
         printf("\nYou win! Press enter to continue.\n");
         hitEnter();
     }
-    else if(score == 1)
+    else if(score == DRAW)
     {
         printf("\nIt's a draw! Press enter to continue.\n");
         hitEnter();

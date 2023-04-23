@@ -32,7 +32,7 @@ clean:
 $(OUTPUTDIR):
 	@mkdir "$(OUTPUTDIR)"
 
-check.exe: testshapes.o shapes.o systemfunctions.o checkinputs.o testcalculator.o calculator.o
+check.exe: testshapes.o shapes.o systemfunctions.o checkinputs.o testcalculator.o calculator.o testrps.o gamecode.o
 	g++ -o $@ $^ $(CFLAGS) -I $(GTEST) $(LIBGTEST)
 
 test: check.exe
