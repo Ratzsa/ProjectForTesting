@@ -1,6 +1,7 @@
 PROG = programmet.exe
 CFLAGS = -Wall -Werror -g
 SOURCES = main.c calculator.c checkinputs.c gamecode.c gamemenu.c shapes.c systemfunctions.c
+TESTSOURCES = testshapes.cpp shapes.c systemfunctions.c checkinputs.c testcalculator.cpp calculator.c testrps.cpp gamecode.c
 DEPS = calculator.h checkinputs.h gamecode.h gamemenu.h shapes.h systemfunctions.h
 CC = gcc
 DEBUG?=1
@@ -18,6 +19,7 @@ endif
 
 
 OBJS = $(addprefix $(OUTPUTDIR)/,$(SOURCES:.c=.o))
+TESTOBJS = $(addprefix $(OUTPUTDIR)/,$(TESTSOURCES:.c=.o))
 
 $(PROG): $(OUTPUTDIR) $(OBJS)
 	$(CC) $(CFLAGS) -o $(PROG) $(OBJS)
@@ -32,7 +34,7 @@ clean:
 $(OUTPUTDIR):
 	@mkdir "$(OUTPUTDIR)"
 
-check.exe: testshapes.o shapes.o systemfunctions.o checkinputs.o testcalculator.o calculator.o testrps.o gamecode.o
+check.exe: $(OUTPUTDIR) $(TESTOBJS)
 	g++ -o $@ $^ $(CFLAGS) -I $(GTEST) $(LIBGTEST)
 
 test: check.exe
