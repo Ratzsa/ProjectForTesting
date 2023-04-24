@@ -22,7 +22,7 @@ void calculator()
 
     printf("Enter the first number: ");
     scanf(" %s", calculatorInput);
-    calculatorNum = checkInputs(calculatorInput);
+    calculatorNum = checkCalculatorInputs(calculatorInput);
     if(!calculatorNum)
     {
         return;
@@ -32,7 +32,7 @@ void calculator()
 
     printf("Enter the second number: ");
     scanf(" %s", calculatorInput);
-    calculatorNum = checkInputs(calculatorInput);
+    calculatorNum = checkCalculatorInputs(calculatorInput);
     if(!calculatorNum)
     {
         return;

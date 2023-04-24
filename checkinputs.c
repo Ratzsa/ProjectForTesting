@@ -25,6 +25,26 @@ bool checkInputs(char input[])
     return true;
 }
 
+bool checkCalculatorInputs(char input[])
+{
+    for(int i = 0; i < strlen(input); i++)
+    {
+        if(isalpha(input[i]))
+        {
+            printf("Incorrect input. Press enter to continue.\n");
+            hitEnter();
+            return false;
+        }
+        if(input[i] == '/' || input[i] == '*' || input[i] == '%' || input[i] == '\\')
+        {
+            printf("Incorrect input. Press enter to continue.\n");
+            hitEnter();
+            return false;
+        }
+    }
+    return true;
+}
+
 char operatorCheck(char input[])
 {
     char returnChar = 'a';
