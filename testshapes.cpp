@@ -3,6 +3,7 @@
 extern "C"
 {
     #include "shapes.h"
+    #include "checkinputs.h"
 }
 
 class ShapesCircumferenceTest : public testing::Test
@@ -15,6 +16,15 @@ protected:
 };
 
 class ShapesAreaTest : public testing::Test
+{
+protected:
+    void SetUp() override
+    {
+        // initialize
+    }
+};
+
+class ShapesInputTest : public testing::Test
 {
 protected:
     void SetUp() override
@@ -86,4 +96,25 @@ TEST_F(ShapesAreaTest,ParallelogramWhenInput8point7And9point2ShouldReturnArea80p
     float h = 9.2;
     float result = parallelogramArea(a, h);
     ASSERT_FLOAT_EQ(80.04, result);
+}
+
+TEST_F(ShapesInputTest,ShapesWhenInputNormalNumberShouldReturnTrue)
+{
+    char input[] = "1234";
+    bool returnValue = checkInputs(input);
+    ASSERT_TRUE(returnValue);
+}
+
+TEST_F(ShapesInputTest,ShapesWhenInputLetterWithinNumbersShouldReturnFalse)
+{
+    char input[] = "12a34";
+    bool returnValue = checkInputs(input);
+    ASSERT_FALSE(returnValue);
+}
+
+TEST_F(ShapesInputTest,ShapesWhenInputOperatorWithinNumbersShouldReturnFalse)
+{
+    char input[] = "12-34";
+    bool returnValue = checkInputs(input);
+    ASSERT_FALSE(returnValue);
 }

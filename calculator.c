@@ -25,6 +25,8 @@ void calculator()
     calculatorNum = checkCalculatorInputs(calculatorInput);
     if(!calculatorNum)
     {
+        printf("Incorrect input. Press enter to continue.\n");
+        hitEnter();
         return;
     }
     firstNum = atof(calculatorInput);
@@ -35,6 +37,8 @@ void calculator()
     calculatorNum = checkCalculatorInputs(calculatorInput);
     if(!calculatorNum)
     {
+        printf("Incorrect input. Press enter to continue.\n");
+        hitEnter();
         return;
     }
     secondNum = atof(calculatorInput);
@@ -44,6 +48,12 @@ void calculator()
     scanf(" %s", calculatorInput);
     operator = operatorCheck(calculatorInput);
 
+    if(operator != '+' && operator != '-' && operator != '/' && operator != '*' && operator != '%')
+    {
+        printf("Incorrect operator.\nPress enter to continue.\n");
+        hitEnter();
+        return;
+    }
     if(secondNum == 0.000000 && operator == '/')
     {
         printf("Error: Can not divide by zero.\nPress enter to continue.\n");

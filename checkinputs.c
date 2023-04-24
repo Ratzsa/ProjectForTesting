@@ -11,14 +11,10 @@ bool checkInputs(char input[])
     {
         if(isalpha(input[i]))
         {
-            printf("Incorrect input. Press enter to continue.\n");
-            hitEnter();
             return false;
         }
         if(input[i] == '+' || input[i] == '-' || input[i] == '/' || input[i] == '*' || input[i] == '%' || input[i] == '\\')
         {
-            printf("Incorrect input. Press enter to continue.\n");
-            hitEnter();
             return false;
         }
     }
@@ -31,16 +27,16 @@ bool checkCalculatorInputs(char input[])
     {
         if(isalpha(input[i]))
         {
-            printf("Incorrect input. Press enter to continue.\n");
-            hitEnter();
             return false;
         }
         if(input[i] == '/' || input[i] == '*' || input[i] == '%' || input[i] == '\\')
         {
-            printf("Incorrect input. Press enter to continue.\n");
-            hitEnter();
             return false;
         }
+        if((i > 0 && input[i] == '+') || (i > 0 && input[i] == '-'))
+        {
+            return false;
+        } 
     }
     return true;
 }

@@ -16,11 +16,6 @@ int main()
     {
         fclose(temp);
         temp = fopen("results.rps", "wb");
-        /*
-        Game toFile;
-        toFile.gameResult = 3;
-        toFile.dateAdded = time(0);
-        fwrite(&toFile, sizeof(Game), 1, temp); */
         fclose(temp);
     }
     if(temp == NULL)

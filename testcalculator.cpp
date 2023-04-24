@@ -6,9 +6,28 @@
 extern "C"
 {
     #include "calculator.h"
+    #include "checkinputs.h"
 }
 
 class CalculatorTest : public testing::Test
+{
+protected:
+    void SetUp() override
+    {
+        // initialize
+    }
+};
+
+class OperatorTest : public testing::Test
+{
+protected:
+    void SetUp() override
+    {
+        // initialize
+    }
+};
+
+class CalculatorInputTest : public testing::Test
 {
 protected:
     void SetUp() override
@@ -198,3 +217,52 @@ TEST_F(CalculatorTest,Input128point77AndZeroAndModulusShouldReturn26)
     ASSERT_FLOAT_EQ(result, 0);
 }
 */
+
+TEST_F(OperatorTest,OperatorCheckWhenInputCorrectOperatorPlusShouldReturnPlus)
+{
+    char o[] = { '+' };
+    char isOperator = operatorCheck(o);
+    ASSERT_EQ('+', isOperator);
+}
+
+TEST_F(OperatorTest,OperatorCheckWhenInputNotAnOperatorCharacterLowercaseAShouldReturn)
+{
+    char o[] = { 'y' };
+    char isOperator = operatorCheck(o);
+    ASSERT_EQ('a', isOperator);
+}
+
+TEST_F(OperatorTest,OperatorCheckWhenInputMoreThanOneCharacterLowercaseAShouldReturn)
+{
+    char o[] = "+-/*";
+    char isOperator = operatorCheck(o);
+    ASSERT_EQ('a', isOperator);
+}
+
+TEST_F(CalculatorInputTest,InputCheckWhenInputHasCharacterThatIsNotANumberShouldReturnFalse)
+{
+    char o[] = "23y45";
+    bool isOperator = checkCalculatorInputs(o);
+    ASSERT_FALSE(isOperator);
+}
+
+TEST_F(CalculatorInputTest,InputCheckWhenInputHasOperatorInTheMiddleShouldReturnFalse)
+{
+    char o[] = "23/45";
+    bool isOperator = checkCalculatorInputs(o);
+    ASSERT_FALSE(isOperator);
+}
+
+TEST_F(CalculatorInputTest,InputCheckWhenInputHasPlusOperatorFirstAndTheRestNumbersShouldReturnTrue)
+{
+    char o[] = "+12345";
+    bool isOperator = checkCalculatorInputs(o);
+    ASSERT_TRUE(isOperator);
+}
+
+TEST_F(CalculatorInputTest,InputCheckWhenInputHasDivideOperatorFirstAndTheRestNumbersShouldReturnFalse)
+{
+    char o[] = "/12345";
+    bool isOperator = checkCalculatorInputs(o);
+    ASSERT_FALSE(isOperator);
+}

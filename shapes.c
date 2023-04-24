@@ -93,6 +93,8 @@ void rectangle()
         isRectangleNum = checkInputs(rectangleInput);
         if(!isRectangleNum)
         {
+            printf("Incorrect input. Press enter to continue.\n");
+            hitEnter();
             return;
         }
         sideA = atof(rectangleInput);
@@ -102,6 +104,8 @@ void rectangle()
         isRectangleNum = checkInputs(rectangleInput);
         if(!isRectangleNum)
         {
+            printf("Incorrect input. Press enter to continue.\n");
+            hitEnter();
             return;
         }
         sideB = atof(rectangleInput);
@@ -136,6 +140,8 @@ void triangle()
     isTriangleNum = checkInputs(triangleInput);
     if(!isTriangleNum)
     {
+        printf("Incorrect input. Press enter to continue.\n");
+        hitEnter();
         return;
     }
     sideA = atof(triangleInput);
@@ -145,6 +151,8 @@ void triangle()
     isTriangleNum = checkInputs(triangleInput);
     if(!isTriangleNum)
     {
+        printf("Incorrect input. Press enter to continue.\n");
+        hitEnter();
         return;
     }
     sideB = atof(triangleInput);
@@ -175,6 +183,8 @@ void circle()
     isCircleNum = checkInputs(circleInput);
     if(!isCircleNum)
     {
+        printf("Incorrect input. Press enter to continue.\n");
+        hitEnter();
         return;
     }
     radius = atof(circleInput);
@@ -209,6 +219,8 @@ void parallelogram()
     isParallelogramNum = checkInputs(parallelogramInput);
     if(!isParallelogramNum)
     {
+        printf("Incorrect input. Press enter to continue.\n");
+        hitEnter();
         return;
     }
     sideA = atof(parallelogramInput);
@@ -218,6 +230,8 @@ void parallelogram()
     isParallelogramNum = checkInputs(parallelogramInput);
     if(!isParallelogramNum)
     {
+        printf("Incorrect input. Press enter to continue.\n");
+        hitEnter();
         return;
     }
     sideB = atof(parallelogramInput);
@@ -227,6 +241,8 @@ void parallelogram()
     isParallelogramNum = checkInputs(parallelogramInput);
     if(!isParallelogramNum)
     {
+        printf("Incorrect input. Press enter to continue.\n");
+        hitEnter();
         return;
     }
     height = atof(parallelogramInput);
