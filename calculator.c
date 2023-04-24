@@ -16,7 +16,7 @@ void calculator()
     float result;
     bool calculatorNum;
     char calculatorInput[50];
-    char operator;
+    char operator = ' ';
 
     clearConsole();
 
