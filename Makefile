@@ -41,6 +41,6 @@ check.exe: shapes.o systemfunctions.o checkinputs.o calculator.o gamecode.o test
 	g++ -o $@ $^ $(CFLAGS) -I $(GTEST) $(LIBGTEST)
 
 test: check.exe
-	./check.exe
+	./check.exe --gtest_color=yes
 
 .PHONY: clean
