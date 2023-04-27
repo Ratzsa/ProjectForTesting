@@ -2,6 +2,6 @@
 #define __CALCULATOR_PART
 
 void calculator();
-float calculation(float a, float b, char op);
+float calculation(const float a, const float b, const char op);
 
 #endif

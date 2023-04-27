@@ -6,9 +6,19 @@ enum handList { EMPTY, ROCK, PAPER, SCISSORS};
 extern "C"
 {
     #include "gamecode.h"
+    #include "checkinputs.h"
 }
 
 class RPSTest : public testing::Test
+{
+protected:
+    void SetUp() override
+    {
+        // initialize
+    }
+};
+
+class RPSMenuInputTest : public testing::Test
 {
 protected:
     void SetUp() override
@@ -69,4 +79,60 @@ TEST_F(RPSTest,WhenInputPlayerSCISSORSAndComputerSCISSORSShouldReturnDRAWForTheP
 {
     int res = gameMechanics(SCISSORS, SCISSORS);
     ASSERT_EQ(DRAW, res);
+}
+
+TEST_F(RPSMenuInputTest,RPSMenuWhenInputOver3ShouldReturnFalse)
+{
+    char input[] = "4";
+    bool correctInput = gameMenuCheck(input);
+    ASSERT_FALSE(correctInput);
+}
+
+TEST_F(RPSMenuInputTest,RPSMenuWhenInputUnder1ShouldReturnFalse)
+{
+    char input[] = "0";
+    bool correctInput = gameMenuCheck(input);
+    ASSERT_FALSE(correctInput);
+}
+
+TEST_F(RPSMenuInputTest,RPSMenuWhenInputNegative1ShouldReturnFalse)
+{
+    char input[] = "-1";
+    bool correctInput = gameMenuCheck(input);
+    ASSERT_FALSE(correctInput);
+}
+
+TEST_F(RPSMenuInputTest,RPSMenuWhenInputOperatorShouldReturnFalse)
+{
+    char input[] = "+";
+    bool correctInput = gameMenuCheck(input);
+    ASSERT_FALSE(correctInput);
+}
+
+TEST_F(RPSMenuInputTest,RPSMenuWhenInputTwoDigitsShouldReturnFalse)
+{
+    char input[] = "10";
+    bool correctInput = gameMenuCheck(input);
+    ASSERT_FALSE(correctInput);
+}
+
+TEST_F(RPSMenuInputTest,RPSMenuWhenInputLetterShouldReturnFalse)
+{
+    char input[] = "a";
+    bool correctInput = gameMenuCheck(input);
+    ASSERT_FALSE(correctInput);
+}
+
+TEST_F(RPSMenuInputTest,RPSMenuWhenInputDigitFollowedByLetterShouldReturnFalse)
+{
+    char input[] = "1a";
+    bool correctInput = gameMenuCheck(input);
+    ASSERT_FALSE(correctInput);
+}
+
+TEST_F(RPSMenuInputTest,RPSMenuWhenInput2ShouldReturnTrue)
+{
+    char input[] = "2";
+    bool correctInput = gameMenuCheck(input);
+    ASSERT_TRUE(correctInput);
 }

@@ -5,9 +5,9 @@
 #include "systemfunctions.h"
 #include "gamecode.h"
 
-void gameResult(int player, int computer);
-void printHand(int choice);
-void saveResult(int result);
+void gameResult(const int player, const int computer);
+void printHand(const int choice);
+void saveResult(const int result);
 int gameMechanics(const int player, const int computer);
 
 enum resultList { LOSE, DRAW, WIN };
@@ -132,7 +132,7 @@ void printHand(const int choice)
     }
 }
 
-void saveResult(int result)
+void saveResult(const int result)
 {
     FILE *resultFile = fopen("results.rps", "ab");
     if(resultFile == NULL)

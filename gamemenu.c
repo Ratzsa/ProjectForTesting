@@ -3,6 +3,7 @@
 #include <stdlib.h>
 #include "gamecode.h"
 #include "systemfunctions.h"
+#include "checkinputs.h"
 
 void printResults();
 
@@ -10,14 +11,22 @@ void gameMenu()
 {
     bool inGameMenu = true;
     int gameMenuSelect;
+    char menuSelectNumCheck[30] = "";
+    bool menuSelectIsNum = false;
 
     while(inGameMenu)
     {
         gameMenuSelect = 0;
+        menuSelectIsNum = false;
         clearConsole();
         printf("ROCK PAPER SCISSORS\n1. Play\n2. Print result list\n3. Return to main menu\n");
         printf("Select: ");
-        scanf(" %d", &gameMenuSelect);
+        scanf(" %s", menuSelectNumCheck);
+        menuSelectIsNum = gameMenuCheck(menuSelectNumCheck);
+        if(menuSelectIsNum)
+        {
+            gameMenuSelect = atoi(menuSelectNumCheck);
+        }
 
         switch(gameMenuSelect)
         {
@@ -91,5 +100,4 @@ void printResults()
     }
 
     hitEnter();
-
 }

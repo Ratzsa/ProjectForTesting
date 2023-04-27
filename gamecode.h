@@ -10,9 +10,9 @@ typedef struct
 } Game;
 
 void gameMain();
-void gameResult(int player, int computer);
-void printHand(int choice);
-void saveResult(int result);
+void gameResult(const int player, int computer);
+void printHand(const int choice);
+void saveResult(const int result);
 int gameMechanics(const int player, const int computer);
 
 #endif

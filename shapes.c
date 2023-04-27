@@ -14,15 +14,14 @@ void triangle();
 void circle();
 void parallelogram();
 int menuSelectionConvert(char text[]);
-float rectangleCircum(float a, float b);
-float rectangleArea(float a, float b);
-float circleCircum(float r);
-float circleArea(float r);
-float triangleCircum(float a, float b, float c);
-float triangleArea(float a, float b);
-float parallelogramCircum(float a, float b);
-float parallelogramArea(float b, float h);
-
+float rectangleCircum(const float a, const float b);
+float rectangleArea(const float a, const float b);
+float circleCircum(const float r);
+float circleArea(const float r);
+float triangleCircum(const float a, const float b, const float c);
+float triangleArea(const float a, const float b);
+float parallelogramCircum(const float a, const float b);
+float parallelogramArea(const float b, const float h);
 
 void shapesMain()
 {

@@ -80,7 +80,7 @@ void calculator()
     hitEnter();     
 }
 
-float calculation(float firstNum, float secondNum, char op)
+float calculation(const float firstNum, const float secondNum, const char op)
 {
     switch(op)
     {
