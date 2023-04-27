@@ -41,7 +41,8 @@ void shapesMain()
         printf("Option: ");
         scanf(" %s", menuInput);
 
-        shapesMenuSelect = menuSelectionConvert(menuInput); // Kanske vore bättre med en bunt if-satser, men det här funkar som det ska.
+        // Kanske vore bättre med en bunt if-satser, men det här funkar som det ska.
+        shapesMenuSelect = menuSelectionConvert(menuInput);
 
         switch(shapesMenuSelect)
         {
