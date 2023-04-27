@@ -40,7 +40,7 @@ void gameMain()
 
         if(playerSelection > 3 || playerSelection < 1)
         {
-            printf("Incorrect input. You lose!\n");
+            printf("Incorrect input. Game will not count.\nPress enter to continue.\n");
             hitEnter();
         }
         else

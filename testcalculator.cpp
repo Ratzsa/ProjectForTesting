@@ -246,9 +246,23 @@ TEST_F(CalculatorInputTest,InputCheckWhenInputHasCharacterThatIsNotANumberShould
     ASSERT_FALSE(isOperator);
 }
 
-TEST_F(CalculatorInputTest,InputCheckWhenInputHasOperatorInTheMiddleShouldReturnFalse)
+TEST_F(CalculatorInputTest,InputCheckWhenInputHasDivideOperatorInTheMiddleShouldReturnFalse)
 {
     char o[] = "23/45";
+    bool isOperator = checkCalculatorInputs(o);
+    ASSERT_FALSE(isOperator);
+}
+
+TEST_F(CalculatorInputTest,InputCheckWhenInputHasPlusOperatorInTheMiddleShouldReturnFalse)
+{
+    char o[] = "23+45";
+    bool isOperator = checkCalculatorInputs(o);
+    ASSERT_FALSE(isOperator);
+}
+
+TEST_F(CalculatorInputTest,InputCheckWhenInputHasMinusOperatorInTheMiddleShouldReturnFalse)
+{
+    char o[] = "23-45";
     bool isOperator = checkCalculatorInputs(o);
     ASSERT_FALSE(isOperator);
 }
@@ -258,6 +272,27 @@ TEST_F(CalculatorInputTest,InputCheckWhenInputHasPlusOperatorFirstAndTheRestNumb
     char o[] = "+12345";
     bool isOperator = checkCalculatorInputs(o);
     ASSERT_TRUE(isOperator);
+}
+
+TEST_F(CalculatorInputTest,InputCheckWhenInputHasTwoPlusOperatorsFirstAndTheRestNumbersShouldReturnFalse)
+{
+    char o[] = "++12345";
+    bool isOperator = checkCalculatorInputs(o);
+    ASSERT_FALSE(isOperator);
+}
+
+TEST_F(CalculatorInputTest,InputCheckWhenInputHasMinusOperatorFirstAndTheRestNumbersShouldReturnTrue)
+{
+    char o[] = "-12345";
+    bool isOperator = checkCalculatorInputs(o);
+    ASSERT_TRUE(isOperator);
+}
+
+TEST_F(CalculatorInputTest,InputCheckWhenInputHasMinusOperatorLastAndTheRestNumbersShouldReturnFalse)
+{
+    char o[] = "12345-";
+    bool isOperator = checkCalculatorInputs(o);
+    ASSERT_FALSE(isOperator);
 }
 
 TEST_F(CalculatorInputTest,InputCheckWhenInputHasDivideOperatorFirstAndTheRestNumbersShouldReturnFalse)
