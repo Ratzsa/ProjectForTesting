@@ -1,7 +1,8 @@
 PROG = programmet.exe
 CFLAGS = -Wall -Werror -g
 SOURCES = main.c calculator.c checkinputs.c gamecode.c gamemenu.c shapes.c systemfunctions.c
-TESTSOURCES = shapes.c systemfunctions.c checkinputs.c calculator.c gamecode.c testshapes.cpp testcalculator.cpp testrps.cpp
+TESTCSOURCES = shapes.c systemfunctions.c checkinputs.c calculator.c gamecode.c
+TESTCPPSOURCES = testshapes.cpp testcalculator.cpp testrps.cpp
 DEPS = calculator.h checkinputs.h gamecode.h gamemenu.h shapes.h systemfunctions.h
 CC = gcc
 DEBUG?=1
@@ -19,16 +20,16 @@ endif
 
 
 OBJS = $(addprefix $(OUTPUTDIR)/,$(SOURCES:.c=.o))
-TESTOBJS = $(addprefix $(OUTPUTDIR)/,$(TESTSOURCES:.c=.o) $(TESTSOURCES:.cpp=.o))
+# TESTOBJS = $(addprefix $(OUTPUTDIR)/,$(TESTSOURCES:.c=.o) $(TESTSOURCES:.cpp=.o))
 
 $(PROG): $(OUTPUTDIR) $(OBJS)
 	$(CC) $(CFLAGS) -o $(PROG) $(OBJS)
 
-$(OUTPUTDIR)/%.o: %.c
+$(OUTPUTDIR)/%.o: %.c $(DEPS)
 	$(CC) $(CFLAGS) -o $@ -c $<
 
-$(OUTPUTDIR)/%.o: %.cpp
-	g++ $(CFLAGS) -c $< -o $@
+$(OUTPUTDIR)/%.o: %.cpp $(DEPS)
+	g++ -o $@ -c $< -I $(GTEST)
 
 clean:
 	@del /q "$(PROG)"
@@ -37,7 +38,7 @@ clean:
 $(OUTPUTDIR):
 	@mkdir "$(OUTPUTDIR)"
 
-check.exe: shapes.o systemfunctions.o checkinputs.o calculator.o gamecode.o testshapes.o testcalculator.o testrps.o
+check.exe: $(OUTPUTDIR)/shapes.o $(OUTPUTDIR)/systemfunctions.o $(OUTPUTDIR)/checkinputs.o $(OUTPUTDIR)/calculator.o $(OUTPUTDIR)/gamecode.o $(OUTPUTDIR)/testshapes.o $(OUTPUTDIR)/testcalculator.o $(OUTPUTDIR)/testrps.o
 	g++ -o $@ $^ $(CFLAGS) -I $(GTEST) $(LIBGTEST)
 
 test: check.exe
